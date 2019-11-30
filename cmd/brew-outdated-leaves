@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+#: * `outdated-leaves`:
+#:
+#: List installed formulae with an updated version available that are
+#: not dependencies of another installed formula.
+
+set -o errexit
+set -o nounset
+
+leaves=$(brew leaves)
+pattern="^$(echo $leaves | tr ' ' '|')\\s"
+
+if [ -t 1 ]; then
+  args=--verbose
+else
+  args=--quiet
+fi
+
+brew outdated $args | egrep "$pattern"
