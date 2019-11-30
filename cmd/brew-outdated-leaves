@@ -16,4 +16,4 @@ else
   args=--quiet
 fi
 
-brew outdated $args | egrep "$pattern"
+brew outdated $args | grep -E "$pattern"
