@@ -8,8 +8,7 @@
 set -o errexit
 set -o nounset
 
-leaves=$(brew leaves)
-pattern="^$(echo $leaves | tr ' ' '|')\\s"
+pattern="^$(brew leaves | tr ' ' '|')\\s"
 
 if [ -t 1 ]; then
   args=--verbose
